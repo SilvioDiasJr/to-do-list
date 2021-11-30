@@ -7,6 +7,7 @@ interface Props {
 export const Container = styled.div<Props>`
   width: 100%;
   height: 4.5rem;
+  position: relative;
 
   display: flex;
   align-items: center;
@@ -39,10 +40,6 @@ export const Container = styled.div<Props>`
 export const CheckButton = styled.button<Props>`
   width: 1.8rem;
   height: 1.8rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
   
   margin-right: 1rem;
 
@@ -55,16 +52,12 @@ export const CheckButton = styled.button<Props>`
 
   ${({ check }) => check && css`
     border: 0;
-    
-    background: #FC5C7D;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  `}
+    width: 2.8rem;
+    height: 2.8rem;
 
-  img {
-    width: 0.875rem;
-    height: 0.875rem;
-  }
+    margin-left: -0.5rem;
+    margin-right: 0.5rem;
+  `}
 `
 
 export const ButtonDelete = styled.button`

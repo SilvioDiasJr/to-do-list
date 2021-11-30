@@ -3,7 +3,8 @@ import React, { useState, useEffect, useContext } from 'react'
 import { StorageContext } from '@contexts/StorageContext'
 import { configToast } from '@utils/toast'
 
-import CheckIcon from '@assets/icon-check.svg'
+import { AnimateCheck } from '@components/AnimateCheck'
+
 import CrossIcon from '@assets/icon-cross.svg'
 
 import { CheckButton, Container, ButtonDelete } from './styles'
@@ -81,12 +82,10 @@ export const CardTask: React.FC<Props> = ({ taskId }) => {
         onClick={handleChecked}
       >
         {task?.status === 'completed' && (
-          <img src={CheckIcon} alt="" />
+          <AnimateCheck />
         )}
       </CheckButton>
-
       <h1>{task?.task}</h1>
-
       <ButtonDelete
         onClick={() => deleteTask(task!.id)}
       >
