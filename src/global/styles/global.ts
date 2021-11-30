@@ -6,10 +6,12 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+  html {
+    width: 100%;
+  }
   
   body {
     width: 100vw;
-    max-width: 700px;
     height: 100vh;
 
     display: flex;
@@ -18,18 +20,26 @@ export const GlobalStyle = createGlobalStyle`
     
     margin: 0 auto;
 
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 
-    background-color: #ffff;
+    background-color: ${({ theme }) => theme.colors.background};
   }
 
   a, button, input, textarea {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
 
   a {
     text-decoration: none;
     cursor: pointer;
+  }
+
+  button {
+    border: 0;
+
+    cursor: pointer;
+
+    background-color: transparent;
   }
 
   @media (max-width: 1080px) {
