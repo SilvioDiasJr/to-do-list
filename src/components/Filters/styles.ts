@@ -28,7 +28,7 @@ export const Button = styled.button<Props>`
 
   &:hover {
     ${({ active }) => !active && css`
-      color: #ffffff;
+      color: ${({ theme }) => theme.colors.text};
     `}
   }
 `
