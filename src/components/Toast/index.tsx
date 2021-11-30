@@ -1,5 +1,5 @@
 import React from 'react'
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer, Zoom } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 export const Toast: React.FC = () => {
@@ -14,6 +14,7 @@ export const Toast: React.FC = () => {
       pauseOnFocusLoss
       draggable
       pauseOnHover
+      transition={Zoom}
     />
   )
 }
