@@ -1,29 +1,24 @@
 import React, { createContext, ReactNode, useState, useEffect } from 'react'
 
 import { configToast } from '@utils/toast'
+import { TaskData } from '@dtos/task'
 
 type StorageContextData = {
   registerTasks(task: string): void
   deleteTask(task: number): void
   refreshTasksData(): void
   deleteCompletedTasks(): void
-  data: Task[]
+  data: TaskData[]
 }
 
 type StorageProviderProps = {
   children: ReactNode
 }
 
-interface Task {
-  id: number
-  task: string
-  status: string
-}
-
 export const StorageContext = createContext({} as StorageContextData)
 
 export function StorageProvider({ children }: StorageProviderProps) {
-  const [data, setData] = useState<Task[]>([])
+  const [data, setData] = useState<TaskData[]>([])
   const notifyDeleteTask = () => configToast({
     type: 'success',
     message: 'Tarefa deletada com  sucesso!!'
@@ -34,7 +29,7 @@ export function StorageProvider({ children }: StorageProviderProps) {
   }, [])
 
   function registerTasks(task: string) {
-    let arrayTask: Task[] = []
+    let arrayTask: TaskData[] = []
     const tasks = localStorage.getItem('@todoList')
 
     if (tasks) {

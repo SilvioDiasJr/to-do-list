@@ -1,20 +1,15 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react'
 
 import { StorageContext } from '@contexts/StorageContext'
+import { TaskData } from '@dtos/task'
 
 import { Filters } from '@components/Filters'
 import { CardTask } from '@components/CardTask'
 
 import { Container, Footer } from './styles'
 
-interface Task {
-  id: number
-  task: string
-  status: string
-}
-
 export const ListTask: React.FC = () => {
-  const [taskFilters, setTaskFilters] = useState<Task[]>([])
+  const [taskFilters, setTaskFilters] = useState<TaskData[]>([])
   const [filters, setFilters] = useState<string>('all')
 
   const { data, deleteCompletedTasks } = useContext(StorageContext)

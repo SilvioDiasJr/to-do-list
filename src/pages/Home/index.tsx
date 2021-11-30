@@ -23,11 +23,13 @@ interface Data {
 }
 
 export const Home: React.FC = () => {
-  const { register, handleSubmit, reset } = useForm<Data>()
   const { registerTasks } = useContext(StorageContext)
+
+  const { register, handleSubmit, reset } = useForm<Data>()
+
   const notify = () => configToast({
     type: 'success',
-    message: 'Tarefa adicionada com sucesso!!'
+    message: 'Sua tarefa foi adicionada com sucesso!!'
   })
 
   const handleRegisterTask: SubmitHandler<Data> = (value) => {

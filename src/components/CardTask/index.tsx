@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 
 import { StorageContext } from '@contexts/StorageContext'
 import { configToast } from '@utils/toast'
+import { TaskData } from '@dtos/task'
 
 import { AnimateCheck } from '@components/AnimateCheck'
 
@@ -9,20 +10,15 @@ import CrossIcon from '@assets/icon-cross.svg'
 
 import { CheckButton, Container, ButtonDelete } from './styles'
 
-interface Task {
-  id: number
-  task: string
-  status: string
-}
-
 interface Props {
   taskId: number
 }
 
-
 export const CardTask: React.FC<Props> = ({ taskId }) => {
-  const [task, setTask] = useState<Task>()
+  const [task, setTask] = useState<TaskData>()
+
   const { data, refreshTasksData, deleteTask } = useContext(StorageContext)
+
   const notifyCompleted = () => configToast({
     type: 'success',
     message: '🎉 Parabéns sua tarefa foi concluída!!'
@@ -30,7 +26,7 @@ export const CardTask: React.FC<Props> = ({ taskId }) => {
 
   const notifyActive = () => configToast({
     type: 'info',
-    message: 'Tarefa ativada novamente!!'
+    message: 'Sua tarefa foi ativada novamente.'
   })
 
   useEffect(() => {
@@ -42,7 +38,7 @@ export const CardTask: React.FC<Props> = ({ taskId }) => {
 
   function handleChecked() {
     if (task?.status === 'completed') {
-      const test = data.map((item: Task) => {
+      const test = data.map((item: TaskData) => {
         if (item.id === taskId) {
           return {
             id: item.id,
@@ -58,7 +54,7 @@ export const CardTask: React.FC<Props> = ({ taskId }) => {
     }
 
     if (task?.status === 'active') {
-      const test = data.map((item: Task) => {
+      const test = data.map((item: TaskData) => {
         if (item.id === taskId) {
           return {
             id: item.id,
