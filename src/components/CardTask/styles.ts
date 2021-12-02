@@ -6,7 +6,7 @@ interface Props {
 
 export const Container = styled.div<Props>`
   width: 100%;
-  height: 4.5rem;
+  min-height: 4.5rem;
   position: relative;
 
   display: flex;
@@ -16,11 +16,9 @@ export const Container = styled.div<Props>`
   padding: 1rem;
 
   border-radius: 10px 10px 0 0;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.background};
+  border-bottom: 3px solid ${({ theme }) => theme.colors.background};
 
   transition: all 0.3s;
-
-  background-color: ${({ theme }) => theme.colors.input_background};
 
   h1 {
     flex: 1;
