@@ -9,6 +9,8 @@ export const Container = styled.div`
 
   border-radius: 10px;
 
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 2px 1px;
+
   background-color: ${({ theme }) => theme.colors.input_background};
 
   div {
