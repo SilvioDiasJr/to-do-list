@@ -33,7 +33,7 @@ export const Footer = styled.footer`
     background-color: transparent;
 
     &:hover {
-      color: #ffffff;
+      color: ${({ theme }) => theme.colors.text};
     }
   }
 
