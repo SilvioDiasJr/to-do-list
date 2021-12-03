@@ -2,16 +2,16 @@ export default {
   colors: {
     title: '#181824',
     text: '#25273C',
-    placeholder: '#c7c9c7',
+    placeholder: '#b0b0b0',
 
     filter_active: '#03a9fc',
 
     input_background: '#ffffff',
 
     card_background: '#ffffff',
-    circle: '#cccfcc',
+    circle: '#a9aba9',
 
-    background: '#fAfAfA',
+    background: '#f0f0f0',
   },
   fonts: {
     regular: 400,
