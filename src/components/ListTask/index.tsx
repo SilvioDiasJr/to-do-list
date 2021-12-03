@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext, useCallback } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 
-import { StorageContext } from '@contexts/StorageContext'
+import { useStorageTask } from '@hooks/useStorageTask'
 import { TaskData } from '@dtos/task'
 
 import { Filters } from '@components/Filters'
@@ -12,7 +12,7 @@ export const ListTask: React.FC = () => {
   const [taskFilters, setTaskFilters] = useState<TaskData[]>([])
   const [filters, setFilters] = useState<string>('all')
 
-  const { data, deleteCompletedTasks } = useContext(StorageContext)
+  const { data, deleteCompletedTasks } = useStorageTask()
 
   const handleTask = useCallback(() => {
     setTaskFilters(data)

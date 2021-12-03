@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { StorageContext } from '@contexts/StorageContext'
+import { useStorageTask } from '@hooks/useStorageTask'
 import { configToast } from '@utils/toast'
 import { TaskData } from '@dtos/task'
 
@@ -17,7 +17,7 @@ interface Props {
 export const CardTask: React.FC<Props> = ({ taskId }) => {
   const [task, setTask] = useState<TaskData>()
 
-  const { data, refreshTasksData, deleteTask } = useContext(StorageContext)
+  const { data, refreshTasksData, deleteTask } = useStorageTask()
 
   const notifyCompleted = () => configToast({
     type: 'success',

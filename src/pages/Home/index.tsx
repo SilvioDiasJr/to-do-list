@@ -1,7 +1,7 @@
-import React, { useContext, Dispatch, SetStateAction, useState, useEffect } from 'react'
+import React, { Dispatch, SetStateAction, useState, useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
-import { StorageContext } from '@contexts/StorageContext'
+import { useStorageTask } from '@hooks/useStorageTask'
 import { configToast } from '@utils/toast'
 
 import { Input } from '@components/Form/Input'
@@ -29,7 +29,7 @@ interface Props {
 
 export const Home: React.FC<Props> = ({ handleTheme }) => {
   const [typeTheme, setTypeTheme] = useState<string>()
-  const { registerTasks } = useContext(StorageContext)
+  const { registerTasks } = useStorageTask()
 
   useEffect(() => {
     const theme = localStorage.getItem('@todoList-theme')
