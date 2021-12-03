@@ -1,7 +1,5 @@
 export default {
   colors: {
-    white: '#ffffff',
-
     title: '#ffffff',
     text: '#e1e3e1',
     placeholder: '#465766',

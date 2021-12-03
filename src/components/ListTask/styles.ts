@@ -21,7 +21,7 @@ export const Footer = styled.footer`
 
   > button {
     font-size: 1rem;
-    font-weight: ${({ theme }) => theme.fonts.regular};
+    font-weight: ${({ theme }) => theme.fonts.bold};
     color: ${({ theme }) => theme.colors.circle};
 
     border: 0;
@@ -39,6 +39,7 @@ export const Footer = styled.footer`
 
   span {
     font-size: 0.875rem;
+    font-weight: ${({ theme }) => theme.fonts.bold};
     color: ${({ theme }) => theme.colors.circle};
   }
 `

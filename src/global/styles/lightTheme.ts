@@ -1,7 +1,7 @@
 export default {
   colors: {
     title: '#181824',
-    text: '#25273C',
+    text: '#3b3e61',
     placeholder: '#b0b0b0',
 
     filter_active: '#03a9fc',

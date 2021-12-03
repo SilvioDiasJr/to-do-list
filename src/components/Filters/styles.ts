@@ -32,7 +32,7 @@ export const Button = styled.button<Props>`
   border: 0;
 
   font-size: 1rem;
-  font-weight: ${({ theme }) => theme.fonts.regular};
+  font-weight: ${({ theme }) => theme.fonts.bold};
   color: ${({ theme }) => theme.colors.circle};
   
   ${({ active }) => active && css`
