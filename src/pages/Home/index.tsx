@@ -49,9 +49,11 @@ export const Home: React.FC<Props> = ({ handleTheme }) => {
   })
 
   const handleRegisterTask: SubmitHandler<Data> = (value) => {
-    registerTasks(value.newTask)
-    notify()
-    reset()
+    if (value.newTask !== '') {
+      registerTasks(value.newTask)
+      notify()
+      reset()
+    }
   }
 
   function changeTheme(theme: string) {
