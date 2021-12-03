@@ -21,6 +21,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({
         type={type}
         ref={ref}
         placeholder='Digite uma tarefa e pressione enter'
+        autoComplete='off'
         {...rest}
       />
     </Container>
