@@ -61,17 +61,21 @@ export function StorageProvider({ children }: StorageProviderProps) {
   }
 
   function deleteCompletedTasks() {
-    const tasks = data.filter(item => item.status !== 'completed')
+    const tasksCompleted = data.filter(item => item.status === 'completed')
 
-    if (tasks.length >= 1) {
-      setData(tasks)
-      localStorage.setItem('@todoList', JSON.stringify(tasks))
-    } else {
-      setData([])
-      localStorage.removeItem('@todoList')
+    if (tasksCompleted.length >= 1) {
+      const tasks = data.filter(item => item.status !== 'completed')
+
+      if (tasks.length >= 1) {
+        setData(tasks)
+        localStorage.setItem('@todoList', JSON.stringify(tasks))
+      } else {
+        setData([])
+        localStorage.removeItem('@todoList')
+      }
+
+      notifyDeleteTasksCompleted()
     }
-
-    notifyDeleteTasksCompleted()
   }
 
   function deleteTask(value: number) {
