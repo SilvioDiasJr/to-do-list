@@ -11,6 +11,10 @@ export default {
     card_background: '#ffffff',
     circle: '#a9aba9',
 
+    title_button_confirm: '#ffffff',
+
+    background_overlay_modal:'#00000059',
+
     background: '#f0f0f0',
   },
   fonts: {
