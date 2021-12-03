@@ -8,7 +8,8 @@
       "@assets/*": ["./assets/*"],
       "@contexts/*": ["./contexts/*"],
       "@utils/*": ["./utils/*"],
-      "@dtos/*": ["./dtos/*"]
+      "@dtos/*": ["./dtos/*"],
+      "@hooks/*": ["./hooks/*"]
     }
   }
 }
