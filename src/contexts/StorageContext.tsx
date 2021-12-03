@@ -20,8 +20,13 @@ export const StorageContext = createContext({} as StorageContextData)
 export function StorageProvider({ children }: StorageProviderProps) {
   const [data, setData] = useState<TaskData[]>([])
   const notifyDeleteTask = () => configToast({
-    type: 'success',
-    message: 'Tarefa deletada com  sucesso!!'
+    type: 'warning',
+    message: 'Tarefa excluída.'
+  })
+
+  const notifyDeleteTasksCompleted = () => configToast({
+    type: 'warning',
+    message: 'Todas as tarefas completadas foram excluídas.'
   })
 
   useEffect(() => {
@@ -65,6 +70,8 @@ export function StorageProvider({ children }: StorageProviderProps) {
       setData([])
       localStorage.removeItem('@todoList')
     }
+
+    notifyDeleteTasksCompleted()
   }
 
   function deleteTask(value: number) {
