@@ -36,24 +36,38 @@ export const ListTask: React.FC = () => {
   }
 
   function deleteTasksCompleted() {
-    openModalAlert({
-      title: 'Deseja excluir todas as tarefas concluídas?',
-      description: 'Ao confirmar as tarefas não estarão mais disponíveis.',
-      buttonConfirm: 'Sim, desejo excluir.',
-      buttonCancel: 'Não',
-      onRequestConfirm: () => deleteCompletedTasks()
-    })
+    const tasksCompleted = data.filter(item => item.status === 'completed')
 
+    if (tasksCompleted.length >= 1) {
+      openModalAlert({
+        title: 'Deseja excluir todas as tarefas concluídas?',
+        description: 'Ao confirmar as tarefas não estarão mais disponíveis.',
+        buttonConfirm: 'Sim, desejo excluir.',
+        buttonCancel: 'Não',
+        onRequestConfirm: () => deleteCompletedTasks()
+      })
+    }
   }
 
   return (
     <Container>
-      {taskFilters?.map(item => (
-        <CardTask
-          key={item.id}
-          taskId={item.id}
-        />
-      ))}
+      {(taskFilters.length === 0 && filters === 'active')
+        && <p>Nenhuma tarefa para ser concluída no momento.</p>
+      }
+
+      {(taskFilters.length === 0 && filters === 'completed')
+        && <p>Nenhuma tarefa concluída no momento.</p>
+      }
+
+      {taskFilters.length >= 1 &&
+        taskFilters?.map(item => (
+          <CardTask
+            key={item.id}
+            taskId={item.id}
+          />
+        ))
+      }
+
       <Footer>
         <span>{data?.filter(item => item.status === 'active').length} items ativos</span>
 

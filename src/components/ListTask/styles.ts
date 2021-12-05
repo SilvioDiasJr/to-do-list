@@ -10,6 +10,15 @@ export const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 2px 1px;
 
   background-color: ${({ theme }) => theme.colors.card_background};
+
+  p {
+    padding: 2rem 0;
+    
+    border-bottom: 3px solid ${({ theme }) => theme.colors.background};
+
+    font-size: 1rem;
+    color: ${({ theme }) => theme.colors.placeholder};
+  }
 `
 
 export const Footer = styled.footer`
