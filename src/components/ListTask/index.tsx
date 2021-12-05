@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react'
 
 import { useStorageTask } from '@hooks/useStorageTask'
+import { useModalAlert } from '@hooks/useModalAlert'
 import { TaskData } from '@dtos/task'
 
 import { Filters } from '@components/Filters'
@@ -13,6 +14,7 @@ export const ListTask: React.FC = () => {
   const [filters, setFilters] = useState<string>('all')
 
   const { data, deleteCompletedTasks } = useStorageTask()
+  const { openModalAlert } = useModalAlert()
 
   const handleTask = useCallback(() => {
     setTaskFilters(data)
@@ -33,6 +35,17 @@ export const ListTask: React.FC = () => {
     setFilters(value)
   }
 
+  function deleteTasksCompleted() {
+    openModalAlert({
+      title: 'Deseja excluir todas as tarefas concluídas?',
+      description: 'Ao confirmar as tarefas não estarão mais disponíveis.',
+      buttonConfirm: 'Sim, desejo excluir.',
+      buttonCancel: 'Não',
+      onRequestConfirm: () => deleteCompletedTasks()
+    })
+
+  }
+
   return (
     <Container>
       {taskFilters?.map(item => (
@@ -48,7 +61,7 @@ export const ListTask: React.FC = () => {
           onFilters={handleTasksFilters}
         />
 
-        <button onClick={deleteCompletedTasks}>Limpar completas</button>
+        <button onClick={deleteTasksCompleted}>Limpar completas</button>
       </Footer>
     </Container>
   )

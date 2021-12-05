@@ -18,6 +18,7 @@ import {
   Title,
   Wrapper
 } from './styles'
+import { ModalAlert } from '@components/ModalAlert'
 
 interface Data {
   newTask: string
@@ -65,6 +66,7 @@ export const Home: React.FC<Props> = ({ handleTheme }) => {
   return (
     <Container >
       <Toast />
+      <ModalAlert />
       <Wrapper>
         <Header>
           <Title>

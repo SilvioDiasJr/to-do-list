@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
+import { useModalAlert } from '@hooks/useModalAlert'
 import { useStorageTask } from '@hooks/useStorageTask'
 import { configToast } from '@utils/toast'
 import { TaskData } from '@dtos/task'
@@ -18,6 +19,7 @@ export const CardTask: React.FC<Props> = ({ taskId }) => {
   const [task, setTask] = useState<TaskData>()
 
   const { data, refreshTasksData, deleteTask } = useStorageTask()
+  const { openModalAlert } = useModalAlert()
 
   const notifyCompleted = () => configToast({
     type: 'success',
@@ -71,6 +73,31 @@ export const CardTask: React.FC<Props> = ({ taskId }) => {
     refreshTasksData()
   }
 
+  function deleteTasksSelected(taskId: number) {
+    const task = data.filter(item => item.id === taskId)
+
+    if (task[0].status === 'active') {
+      openModalAlert({
+        title: 'Deseja excluir a tarefa antes de conclui-la?',
+        description: 'Ao confirmar a tarefa não estará mais disponível.',
+        buttonConfirm: 'Sim, desejo excluir.',
+        buttonCancel: 'Não',
+        onRequestConfirm: () => deleteTask(taskId)
+      })
+    }
+
+    if (task[0].status === 'completed') {
+      openModalAlert({
+        title: 'Deseja excluir a tarefa?',
+        description: 'Ao confirmar a tarefa não estará mais disponível.',
+        buttonConfirm: 'Sim, desejo excluir.',
+        buttonCancel: 'Não',
+        onRequestConfirm: () => deleteTask(taskId)
+      })
+    }
+
+  }
+
   return (
     <Container check={task?.status === 'completed'}>
       <CheckButton
@@ -83,7 +110,7 @@ export const CardTask: React.FC<Props> = ({ taskId }) => {
       </CheckButton>
       <h1>{task?.task}</h1>
       <ButtonDelete
-        onClick={() => deleteTask(task!.id)}
+        onClick={() => deleteTasksSelected(task!.id)}
       >
         <img src={CrossIcon} alt="" />
       </ButtonDelete>
