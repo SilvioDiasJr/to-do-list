@@ -47,5 +47,12 @@ export const Title = styled.div`
 
 export const Content = styled.div`
   width: 100%;
+
+  text-align: center;
+
+  p {
+    font-size: 1rem;
+    color: ${({ theme }) => theme.colors.placeholder}
+  }
 `
 

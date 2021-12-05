@@ -30,7 +30,7 @@ interface Props {
 
 export const Home: React.FC<Props> = ({ handleTheme }) => {
   const [typeTheme, setTypeTheme] = useState<string>()
-  const { registerTasks } = useStorageTask()
+  const { data, registerTasks } = useStorageTask()
 
   useEffect(() => {
     const theme = localStorage.getItem('@todoList-theme')
@@ -94,7 +94,10 @@ export const Home: React.FC<Props> = ({ handleTheme }) => {
         </Header>
 
         <Content>
-          <ListTask />
+          {data.length >= 1
+            ? <ListTask />
+            : <p>Você não tem tarefa cadastrada no momento.</p>
+          }
         </Content>
       </Wrapper>
     </Container>
