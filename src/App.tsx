@@ -8,6 +8,7 @@ import { Home } from './pages/Home'
 import { GlobalStyle } from './global/styles/global'
 import darkTheme from './global/styles/darkTheme'
 import lightTheme from './global/styles/lightTheme'
+import { ModalAlertProvider } from '@contexts/ModalAlertContext'
 
 export const App: React.FC = () => {
   const [typeTheme, setTypeTheme] = useState('')
@@ -15,7 +16,9 @@ export const App: React.FC = () => {
   return (
     <ThemeProvider theme={typeTheme === 'dark' ? darkTheme : lightTheme}>
       <StorageProvider>
-        <Home handleTheme={setTypeTheme} />
+        <ModalAlertProvider>
+          <Home handleTheme={setTypeTheme} />
+        </ModalAlertProvider>
       </StorageProvider>
       <GlobalStyle />
     </ThemeProvider>
