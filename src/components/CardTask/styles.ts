@@ -60,8 +60,11 @@ export const CheckButton = styled.button<Props>`
 
 export const ButtonDelete = styled.button`
   padding-left: 1rem;
+
   img {
-    width: 1rem;
-    height: 1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+
+    margin-top: 0.875rem;
   }
 `

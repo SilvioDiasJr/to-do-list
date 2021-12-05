@@ -28,7 +28,7 @@ export const CardTask: React.FC<Props> = ({ taskId }) => {
 
   const notifyActive = () => configToast({
     type: 'info',
-    message: 'Sua tarefa foi ativada novamente.'
+    message: 'Sua tarefa está ativa novamente.'
   })
 
   useEffect(() => {
